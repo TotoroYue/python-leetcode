@@ -10,10 +10,20 @@
 # Explanation:
 # The character 'l' at index 0 is the first character that does not occur at any other index.
 
-
-
-
-
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        
+        count = {}
+        for char in s:
+            if char in count:
+                count[char] += 1       
+            else:
+                count[char] = 1
+
+        for i, target in enumerate(s):
+            if count[target] == 1:
+                return i;
+        return -1   
+
+solution = Solution()
+s = "lleetcode"
+print(solution.firstUniqChar(s))
