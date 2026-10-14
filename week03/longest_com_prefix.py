@@ -17,8 +17,19 @@ class Solution:
                 prefix = prefix[:-1]
         return prefix
 
+    def longestComPrefix_i(self, strs: list[str]) -> str:
+        if not strs:
+            return ""
+
+        for i in range(len(strs[0])):
+            for word in strs[1:]:
+                if i >= len(word) or strs[0][i] != word[i]:
+                    return strs[0][:i]
+        
+
+
 solution = Solution()
-strs = ["flower","flow","flight"]
-print(solution.longestComPrefix(strs))
+strs = ["flower","flow","floight","flo"]
+print(solution.longestComPrefix_i(strs))
 
     
