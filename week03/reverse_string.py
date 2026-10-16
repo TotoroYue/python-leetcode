@@ -24,7 +24,6 @@ class Solution:
             left += 1
             right -= 1
 
-        return s
 
 solution = Solution()
 s = ["h","e","l","l","o"]
