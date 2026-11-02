@@ -12,3 +12,32 @@
 
 # Those numbers for which this process ends in 1 are happy.
 # Return true if n is a happy number, and false if not.
+
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        seen = set()
+
+        while n != 1:
+            digits = []
+            if n in seen:
+                return False
+            seen.add(n)
+            
+            while n > 0:
+                digit = n % 10
+                digits.append(digit)
+                n = n // 10
+
+            total = 0
+            for digit in digits:
+                total = total + digit ** 2
+                
+            n = total
+
+        if n == 1:
+            return True
+        else:
+            return False
+
+solution = Solution()
+print(solution.isHappy(103))
