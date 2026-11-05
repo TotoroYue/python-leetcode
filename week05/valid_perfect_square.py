@@ -11,3 +11,24 @@
 # Input: num = 16
 # Output: true
 # Explanation: We return true because 4 * 4 = 16 and 4 is an integer.
+class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        left = 1
+        right = num
+
+        while left <= right:
+            mid = (left + right) // 2
+            square = mid * mid
+
+            if square == num:
+                return True
+            elif square < num:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        return False
+
+
+solution = Solution()
+print(solution.isPerfectSquare(16))
