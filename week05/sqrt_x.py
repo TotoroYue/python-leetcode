@@ -16,15 +16,11 @@ class Solution:
     def mySqrt(self, x: int) -> int:
         left = 1
         right = x
-        target = 0
 
         while left <= right:
             root = (left + right) // 2
-            
-            
             if root * root <= x < (root + 1) * (root + 1):
                 return root
-            
             elif root * root > x:
                 right = root - 1
             else:
