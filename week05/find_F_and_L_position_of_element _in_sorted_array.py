@@ -18,43 +18,66 @@
 # Output: [-1,-1]
 
 class Solution:
-    def searchFirstRange(self, nums: list[int], target: int) -> list[int]:
+    def searchRange(self, nums: list[int], target: int) -> list[int]:
         left = 0
         right = len(nums) - 1
-        res = -1
+        res = [-1,-1]
 
         while left <= right:
             mid = (left + right) // 2
             if nums[mid] == target:
-                res = mid
+                res[0] = mid
                 right = mid - 1
             elif nums[mid] < target:
                 left = mid + 1
             else:
                 right = mid - 1
-     
+
+        left = 0
+        right = len(nums) - 1
+
+        while left <= right:
+            mid = (left + right) // 2
+            if nums[mid] == target:
+                res[1] = mid
+                left = mid + 1
+            elif nums[mid] < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+
         return res
 
-    def searchLastRange(self, nums: list[int], target: int) -> list[int]:
+    def searchRange_II(self, nums, target):
+
+        def find_bound(find_first):
             left = 0
             right = len(nums) - 1
             res = -1
-    
+
             while left <= right:
                 mid = (left + right) // 2
+
                 if nums[mid] == target:
                     res = mid
-                    left = mid + 1
+
+                    if find_first:
+                        right = mid - 1
+                    else:
+                        left = mid + 1
+
                 elif nums[mid] < target:
                     left = mid + 1
                 else:
                     right = mid - 1
-         
+
             return res
+
+        return [find_bound(True), find_bound(False)]
 
 solution = Solution()
 nums = [5,7,7,8,8,10]
-target = 8
-print(solution.searchFirstRange(nums, target))
-print(solution.searchLastRange(nums, target))
+target = 6
+print(solution.searchRange(nums, target))
+
 
