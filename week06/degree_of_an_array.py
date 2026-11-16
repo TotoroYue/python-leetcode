@@ -20,3 +20,36 @@
 # Explanation: 
 # The degree is 3 because the element 2 is repeated 3 times.
 # So [2,2,3,1,4,2] is the shortest subarray, therefore returning 6.
+
+class Solution:
+    def findShortestSubArray(self, nums: list[int]) -> int:
+        count = {}
+        first = {}
+        last = {}
+
+        for i in range(len(nums)):
+            num = nums[i]
+
+            if num not in count:
+                count[num] = 0
+                first[num] = i
+
+            count[num] += 1
+            last[num] = i
+
+        degree = max(count.values())
+
+        shortest = len(nums)
+
+        for num in count:
+            if count[num] == degree:
+                length = last[num] - first[num] + 1
+                shortest = min(shortest, length)
+
+        return shortest
+
+solution = Solution()
+nums = [1,2,2,2,3,1]
+print(solution.findShortestSubArray(nums))
+
+
