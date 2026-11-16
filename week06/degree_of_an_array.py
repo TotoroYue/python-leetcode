@@ -14,7 +14,6 @@
 # [1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]
 # The shortest length is 2. So return 2.
 
-
 # Example 2:
 # Input: nums = [1,2,2,3,1,4,2]
 # Output: 6
