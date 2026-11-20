@@ -16,3 +16,31 @@
 # Example 3:
 # Input: arr = [-3,0,1,-3,1,1,1,-3,10,0]
 # Output: true
+
+class Solution:
+    def uniqueOccurences(self, arr: list[int]) -> bool:
+        res = {}
+        seen = set()
+
+        for i in range(len(arr)):
+            if arr[i] in res:
+                res[arr[i]] += 1 
+            else:
+                res[arr[i]] = 1
+
+        for value in res.values():
+            if value in seen:
+                return False
+            else:
+                seen.add(value)
+
+        return True
+
+
+solution = Solution()
+arr = [-3,0]
+print(solution.uniqueOccurences(arr))
+
+
+
+                        
